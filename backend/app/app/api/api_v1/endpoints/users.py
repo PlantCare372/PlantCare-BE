@@ -30,8 +30,8 @@ def read_users(
 @router.post("/", response_model=schemas.User)
 def create_user(
     *,
-    db: Session = Depends(deps.get_db),
     user_in: schemas.UserCreate,
+    db: Session = Depends(deps.get_db),
     current_user: models.User = Depends(deps.get_current_active_superuser),
 ) -> Any:
     """
