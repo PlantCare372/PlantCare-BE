@@ -16,15 +16,21 @@
 - Để xem API document mở localhost/redoc hoặc localhost/docs
 - Để xem database vô localhost:5050 đăng nhập bằng
     - Username: admin@plantcare.com
-    - Password: 123456789
+    - Password: changethis
     - Postgres server: db
     - Postgres username: postgres
-    - Postgres password: 123456789
+    - Postgres password: changethis
     - Database name: app
 
 - Super user account
     - email: admin@plantcare.com
-    - password: 123456789
+    - password: changethis
+
+## Hướng dẫn sử dụng VirtualBox
+- Khi mở VirtualBox lên chạy 192.168.56.1/redoc để xem doc API
+- APi sẽ chạy ở 192.168.56.1/api/v1 (Ví dụ 192.168.56.1/login/access-token để lấy token)
+- Link: https://drive.google.com/file/d/16Bmn1lqavX4T5ravAuJfI1TFPwCPc4DE/view?usp=sharing
+- Link hướng dẫn sử dụng: https://www.awesomescreenshot.com/video/3757124?key=3389b88544543e26ed9de4c70646a75a
 
 ## Progress
 - [x] Hoàn tất API plant details
