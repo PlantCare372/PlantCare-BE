@@ -14,6 +14,10 @@ class Plant(Base):
     name = Column(String, index=True)
     description = Column(String, index=False)
     image = Column(String, index=False)
+    temperature = Column(String, index=False)
+    light = Column(String, index=False)
+    humidity = Column(String, index=False)
+    wind = Column(String, index=False)
 
     
 

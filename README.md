@@ -31,6 +31,10 @@
 - APi sẽ chạy ở 192.168.56.1/api/v1 (Ví dụ 192.168.56.1/login/access-token để lấy token)
 - Link: https://drive.google.com/file/d/16Bmn1lqavX4T5ravAuJfI1TFPwCPc4DE/view?usp=sharing
 - Link hướng dẫn sử dụng: https://www.awesomescreenshot.com/video/3757124?key=3389b88544543e26ed9de4c70646a75a
+- Có thể SSH vào VMBox bằng lệnh
+```bash
+    ssh triettran200800@192.168.56.102
+```
 
 ## Progress
 - [x] Hoàn tất API plant details
