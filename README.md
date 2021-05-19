@@ -36,9 +36,13 @@
     ssh triettran200800@192.168.56.102
 ```
 
+## Database diagram
+![Database diagram](./Database_diagram.png)
+
 ## Progress
 - [x] Hoàn tất API plant details
 - [x] Hoàn tất API search plants
 - [x] Hoàn tất API add, remove và list các favorite plant
 - [x] Hoàn tất các API basic về user, bao gồm login, signup (create_user)
 - [x] Hoàn tất API phân loại plants (trả về top 5 result với input là base64 string)
+- [x] Hoàn tất Database diagram

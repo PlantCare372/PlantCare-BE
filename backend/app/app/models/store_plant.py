@@ -11,4 +11,5 @@ if TYPE_CHECKING:
 
 class StorePlant(Base):
     id = Column(Integer, primary_key=True, index=True)
-
+    store_id = Column(Integer, ForeignKey("store.id"))
+    plant_id = Column(Integer, ForeignKey("plant.id"))
