@@ -39,6 +39,10 @@
 ## Database diagram
 ![Database diagram](./Database_diagram.png)
 
+## Class diagram
+![Class diagram](./Class_diagram.png)
+
+
 ## Progress
 - [x] Hoàn tất API plant details
 - [x] Hoàn tất API search plants
