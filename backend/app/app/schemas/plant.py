@@ -7,6 +7,10 @@ from pydantic import BaseModel
 class PlantBase(BaseModel):
     name: Optional[str] = None
     description: Optional[str] = None
+    temperature: Optional[str] = None
+    light: Optional[str] = None
+    humidity: Optional[str] = None
+    wind: Optional[str] = None
 
 
 # Properties to receive on plant creation
@@ -24,6 +28,10 @@ class PlantInDBBase(PlantBase):
     id: int
     name: str
     description: str
+    temperature: str
+    light: str
+    humidity: str
+    wind: str
 
     class Config:
         orm_mode = True
