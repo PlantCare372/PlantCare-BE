@@ -28,10 +28,10 @@ class PlantInDBBase(PlantBase):
     id: int
     name: str
     description: str
-    temperature: str
-    light: str
-    humidity: str
-    wind: str
+    temperature: Optional[str] = None
+    light:  Optional[str] = None
+    humidity:  Optional[str] = None
+    wind:  Optional[str] = None
 
     class Config:
         orm_mode = True
