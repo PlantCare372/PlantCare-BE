@@ -10,6 +10,8 @@ from app.api import deps
 from app.core.config import settings
 from app.utils import send_new_account_email
 
+from datetime import datetime
+
 router = APIRouter()
 
 
@@ -83,6 +85,7 @@ def read_user_me(
     """
     Get current user.
     """
+
     return current_user
 
 
@@ -111,6 +114,65 @@ def create_user_open(
     user_in = schemas.UserCreate(password=password, email=email, full_name=full_name)
     user = crud.user.create(db, obj_in=user_in)
     return user
+
+
+@router.get("/add-reminder/{plant_id}")
+def add_to_favorites(
+    plant_id: int,
+    current_user: models.User = Depends(deps.get_current_active_user),
+    db: Session = Depends(deps.get_db),
+) -> Any:
+    """
+    Add reminder to user
+    """
+
+    plant = crud.plant.get(db, id=plant_id)
+
+    if not plant:
+        raise HTTPException(
+            status_code=401,
+            detail="Plant not exist",
+        )
+
+    if not plant.reminder_time:
+        raise HTTPException(
+            status_code=401,
+            detail="Plant don't have schedule time",
+        )
+
+    reminder = crud.user_reminder.get_multi_by_user_id(db, user_id=current_user.id, plant_id=plant_id)
+
+    if len(reminder) > 0:
+        raise HTTPException(
+            status_code=401,
+            detail="Reminder added for two week",
+        )
+
+    [hour, minute] = plant.reminder_time.split(":")
+
+    now = datetime.now()
+
+
+    for i in range(1, 15):
+        planned_time = now.replace(day=now.day + i, hour=int(hour), minute=int(minute))
+        crud.user_reminder.create(db, obj_in=schemas.UserReminderCreate(user_id=current_user.id, plant_id=plant_id, detail_reminder_time=planned_time))
+
+    return {"message": "Add reminder successfully"}
+
+
+@router.get("/reminder")
+def add_to_favorites(
+    plant_id: int = None,
+    current_user: models.User = Depends(deps.get_current_active_user),
+    db: Session = Depends(deps.get_db),
+) -> Any:
+    """
+    Add reminder to user
+    """
+
+    return crud.user_reminder.get_multi_by_user_id(db, user_id=current_user.id, plant_id=plant_id)
+
+
 
 @router.get("/add-to-favorites/{plant_id}", response_model=schemas.Plant)
 def add_to_favorites(

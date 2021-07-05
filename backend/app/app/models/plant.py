@@ -18,6 +18,7 @@ class Plant(Base):
     light = Column(String, index=False)
     humidity = Column(String, index=False)
     wind = Column(String, index=False)
+    reminder_time = Column(String, index=False)
 
     
 

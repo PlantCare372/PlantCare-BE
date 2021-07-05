@@ -7,3 +7,4 @@ from app.models.plant import Plant
 from app.models.user_plant import UserPlant
 from app.models.store import Store
 from app.models.store_plant import StorePlant
+from app.models.user_reminder import UserReminder
