@@ -3,6 +3,7 @@ from .crud_user import user
 from .crud_plant import plant
 from .crud_user_plant import user_plant
 from .crud_user_reminder import user_reminder
+from .crud_owner_plant import owner_plant
 
 # For a new basic set of CRUD operations you could just do
 

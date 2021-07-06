@@ -141,9 +141,29 @@ def buy_plant(
         confirm=True
     )
 
+    crud.owner_plant.create(db, obj_in=schemas.OwnerPlantCreate(user_id=current_user.id, plant_id=payment.plant_id))
+
     return {
         "client_secret": jsonable_encoder(payment_intent)
     }
+
+
+
+@router.get("/owned")
+def get_owned_plant(
+    db: Session = Depends(deps.get_db),
+    current_user: models.User = Depends(deps.get_current_active_user),
+    skip: int = 0,
+    limit: int = 100,
+) -> Any:
+    """
+    Create new user.
+    """
+
+    plants = crud.owner_plant.get_multi_by_user_id(db, user_id=current_user.id, skip=skip, limit=limit)
+    
+    return plants
+
 
 
 @router.get("/add-reminder/{plant_id}")

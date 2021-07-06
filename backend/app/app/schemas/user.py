@@ -21,6 +21,7 @@ class UserPayment(UserBase):
     email: EmailStr
     payment_method_id: str
     price: int
+    plant_id: int
 
 
 # Properties to receive via API on update
