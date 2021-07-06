@@ -142,7 +142,7 @@ def buy_plant(
     )
 
     return {
-        "client_secret": payment_intent.client_secret
+        "client_secret": jsonable_encoder(payment_intent)
     }
 
 
