@@ -122,7 +122,7 @@ def create_user_open(
 def buy_plant(
     payment: schemas.UserPayment,
     db: Session = Depends(deps.get_db),
-    current_user: models.User = Depends(deps.get_current_active_superuser),
+    current_user: models.User = Depends(deps.get_current_active_user),
 ) -> Any:
     """
     Create new user.
