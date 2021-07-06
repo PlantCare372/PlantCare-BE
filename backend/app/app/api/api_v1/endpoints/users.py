@@ -11,6 +11,8 @@ from app.core.config import settings
 from app.utils import send_new_account_email
 
 from datetime import datetime
+import stripe
+
 
 router = APIRouter()
 
@@ -114,6 +116,34 @@ def create_user_open(
     user_in = schemas.UserCreate(password=password, email=email, full_name=full_name)
     user = crud.user.create(db, obj_in=user_in)
     return user
+
+
+@router.post("/payment/buy")
+def buy_plant(
+    payment: schemas.UserPayment,
+    db: Session = Depends(deps.get_db),
+    current_user: models.User = Depends(deps.get_current_active_superuser),
+) -> Any:
+    """
+    Create new user.
+    """
+
+    stripe.api_key = 'sk_test_51JA8KZE7avB6EvajjeSP7jogYeO6sX2dTM6ryhg5wdS1D6aX0RNLDF2Lq8KDOFdP944aAnWvoCVDFjYfVR7qzBZz00jdIkltxr' #Your test/live secret key
+
+    payment_intent = stripe.PaymentIntent.create(
+        payment_method_types=['card'],
+        payment_method = payment.payment_method_id,
+        amount=payment.price,
+        application_fee_amount=140,
+        currency='usd',
+        stripe_account='acct_1JA8TU2QNSk8WjAB',#connected account ID
+        receipt_email=payment.email,
+        confirm=True
+    )
+
+    return {
+        "client_secret": payment_intent.client_secret
+    }
 
 
 @router.get("/add-reminder/{plant_id}")
