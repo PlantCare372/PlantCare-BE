@@ -128,7 +128,7 @@ def buy_plant(
     Create new user.
     """
 
-    stripe.api_key = 'sk_test_51GxwLWEToGSATV5yn34N1XZ3lFp9a4TlaiN6kWeJJTpyiVAs7WJTJepYtqGY0aMRHAsUEeRdlJJZ21Dbj3AcKMGl00dJp0bOCg' #Your test/live secret key
+    stripe.api_key = 'sk_test_51JA8KZE7avB6EvajjeSP7jogYeO6sX2dTM6ryhg5wdS1D6aX0RNLDF2Lq8KDOFdP944aAnWvoCVDFjYfVR7qzBZz00jdIkltxr' #Your test/live secret key
 
     payment_intent = stripe.PaymentIntent.create(
         payment_method_types=['card'],
