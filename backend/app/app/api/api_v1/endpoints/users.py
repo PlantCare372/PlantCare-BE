@@ -129,7 +129,7 @@ def buy_plant(
     """
     print("Buy")
 
-    stripe.api_key = 'sk_test_51JA8KZE7avB6EvajjeSP7jogYeO6sX2dTM6ryhg5wdS1D6aX0RNLDF2Lq8KDOFdP944aAnWvoCVDFjYfVR7qzBZz00jdIkltxr' #Your test/live secret key
+    stripe.api_key = 'sk_test_51JAcKuLeFWZmxKREw1cvM1SFnP3dYbxhwhZ6K1utB4QqjCuEbbFA3tU2jHOI05Tc5EG04QHLpjQrhHScTjC3D78e00s4XfvI8l' #Your test/live secret key
 
     payment_intent = stripe.PaymentIntent.create(
         payment_method_types=['card'],
@@ -137,7 +137,7 @@ def buy_plant(
         amount=payment.price,
         application_fee_amount=140,
         currency='usd',
-        stripe_account='acct_1JA8TU2QNSk8WjAB',#connected account ID
+        stripe_account='acct_1JAcT2Elsb5ptiZL',#connected account ID
         receipt_email=payment.email,
         confirm=True
     )
