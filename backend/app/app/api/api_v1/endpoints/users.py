@@ -127,6 +127,7 @@ def buy_plant(
     """
     Create new user.
     """
+    print("Buy")
 
     stripe.api_key = 'sk_test_51JA8KZE7avB6EvajjeSP7jogYeO6sX2dTM6ryhg5wdS1D6aX0RNLDF2Lq8KDOFdP944aAnWvoCVDFjYfVR7qzBZz00jdIkltxr' #Your test/live secret key
 
